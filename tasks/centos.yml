@@ -1,0 +1,20 @@
+---
+
+- name: add grafana repo
+  copy: src=etc/yum.repos.d/grafana.repo dest=/etc/yum.repos.d/grafana.repo mode=0644 backup=yes
+
+- name: install grafana related packages
+  yum: name={{ item }} state=present
+  with_items:
+    - grafana
+
+#- name: template /etc/grafana/grafana.ini
+#  template: src=etc/grafana/grafana.ini.j2
+#            dest=/etc/grafana/grafana.ini
+#            mode=644 backup=yes
+#  notify: restart grafana
+
+- name: start and enable grafana
+  service: name={{ item }} state=started enabled=yes
+  with_items:
+    - grafana-server
