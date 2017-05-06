@@ -1,14 +1,8 @@
-grafana
-================
+Grafana
+=======
 
-deploy grafana
+This role is used to deploy Grafana
 
-Role Variables
---------------
-
-```
-grafana
-```
 
 Example Playbook
 ----------------
@@ -17,7 +11,7 @@ Example Playbook
 - hosts: grafana
   become: true
   roles:
-    - /path/to/ansible-galaxy-grafana
+    - frank6866.grafana
 ```
 
 License
