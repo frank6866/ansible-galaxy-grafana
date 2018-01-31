@@ -1,3 +1,6 @@
 ---
 # defaults file for grafana
 
+grafana_package_name: grafana-4.6.3-1.x86_64.rpm
+grafana_download_url: https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana-4.6.3-1.x86_64.rpm
+grafana_package_checksum: "sha256: bfb639baffb34d43f826c6edc2912a8b79957ab08e777ec77fa7e931f741944c"

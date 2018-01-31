@@ -1,12 +1,13 @@
 ---
 
-- name: add grafana repo
-  copy: src=etc/yum.repos.d/grafana.repo dest=/etc/yum.repos.d/grafana.repo mode=0644 backup=yes
+#- name: add grafana repo
+#  copy: src=etc/yum.repos.d/grafana.repo dest=/etc/yum.repos.d/grafana.repo mode=0644 backup=yes
+
+- name: down grafana package
+  get_url: url={{ grafana_download_url }} checksum={{ grafana_package_checksum }} dest=/tmp/{{ grafana_package_name }}
 
 - name: install grafana related packages
-  yum: name={{ item }} state=present
-  with_items:
-    - grafana
+  yum: name=/tmp/{{ grafana_package_name }} state=present
 
 - name: template /etc/grafana/grafana.ini
   template: src=etc/grafana/grafana.ini.j2
